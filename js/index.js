@@ -24,7 +24,6 @@ const buttonSoundFire = document.querySelector('.sound-fire')
 
 const buttonControlPlay = document.querySelector('.controls-play')
 const buttonControlStop = document.querySelector('.controls-stop')
-const buttonCrontolPause = document.querySelector('.controls-pause')
 const buttonControlAddMinutes = document.querySelector('.controls-add_minutes')
 const buttonControlRemoveMinutes = document.querySelector('.controls-remove_minutes')
 
@@ -66,7 +65,9 @@ buttonControlPlay.addEventListener('click', function() {
     buttonControlAddMinutes.classList.remove('controls-selected')
     buttonControlRemoveMinutes.classList.remove('controls-selected')
 
-    timer.play()
+    
+    timer.countDown()
+    timer.howManyMinutes()
     
 })
 
@@ -92,9 +93,4 @@ buttonControlRemoveMinutes.addEventListener('click', function() {
     buttonControlStop.classList.remove('controls-selected')
     buttonControlPlay.classList.remove('controls-selected')
     buttonControlRemoveMinutes.classList.add('controls-selected')
-})
-
-buttonCrontolPause.addEventListener('click', function(){
-    console. log(timerTimeOut)
-    timer.pause()
 })

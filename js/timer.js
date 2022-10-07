@@ -10,7 +10,6 @@ export default function Timer(
 ) {
     timerDisplay
     seconds
-    let isPaused = false
     function updateTimerDisplay(minutes, seconds) {
         minutesDisplay.textContent = String(minutes).padStart(2, "0")
         secondsDisplay.textContent = String(seconds).padStart(2, "0")
@@ -48,23 +47,6 @@ export default function Timer(
         clearTimeout(timerTimeOut)
     
     }
-
-
-    function pause() {
-        clearTimeout(timerTimeOut)
-        isPaused = true
-    }
-
-    function play() {
-
-        if(isPaused) {
-            countDown()
-        } else {
-            countDown()
-            howManyMinutes()
-        }
-        isPaused = false
-    }
     
     function howManyMinutes() {
         let newMinutes = prompt('Quantos minutos?')
@@ -83,8 +65,6 @@ export default function Timer(
         countDown,
         timerReset,
         clearTimeout,
-        howManyMinutes,
-        pause,
-        play
+        howManyMinutes
     }
 }
