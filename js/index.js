@@ -1,3 +1,6 @@
+import Timer from "./timer.js"
+
+
 const timerDisplay = document.querySelector('.timer')
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.second')
@@ -5,6 +8,13 @@ let minutes = Number(minutesDisplay.textContent)
 let seconds
 let timerTimeOut
 
+let timer = Timer(
+    minutesDisplay,
+    secondsDisplay,
+    timerDisplay,
+    timerTimeOut,
+    seconds,
+    minutes)
 
 
 const buttonSoundForest = document.querySelector('.sound-forest')
@@ -13,7 +23,6 @@ const buttonSoundCoffeeShop = document.querySelector('.sound-coffee_shop')
 const buttonSoundFire = document.querySelector('.sound-fire')
 
 const buttonControlPlay = document.querySelector('.controls-play')
-const buttonControlPause = document.querySelector('.controls-pause')
 const buttonControlStop = document.querySelector('.controls-stop')
 const buttonControlAddMinutes = document.querySelector('.controls-add_minutes')
 const buttonControlRemoveMinutes = document.querySelector('.controls-remove_minutes')
@@ -48,43 +57,7 @@ buttonSoundFire.addEventListener('click', function(){
     buttonSoundForest.classList.remove('button-selected')
 })
 
-function updateTimerDisplay(minutes, seconds) {
-    minutesDisplay.textContent = String(minutes).padStart(2, "0")
-    secondsDisplay.textContent = String(seconds).padStart(2, "0")
 
-}
-
-function countDown() {
-   timerTimeOut = setTimeout(function() {
-        let seconds = Number(secondsDisplay.textContent)
-        let minutes = Number(minutesDisplay.textContent)
-        let isFinished = minutes <= 0 && seconds <= 0
-
-        updateTimerDisplay(minutes, 0)
-        
-        if(isFinished) {
-            timerReset()
-            return
-        }
-
-        
-        if(seconds <= 0) {
-            seconds = 60
-            --minutes
-        }
-
-        updateTimerDisplay(minutes,String(seconds - 1), minutes)
-
-
-        countDown()
-    }, 1000)  
-}
-
-function timerReset() {
-    updateTimerDisplay(minutes, 0)
-    clearTimeout(timerTimeOut)
-
-}
 
 buttonControlPlay.addEventListener('click', function() {
     buttonControlPlay.classList.add('controls-selected')
@@ -93,8 +66,8 @@ buttonControlPlay.addEventListener('click', function() {
     buttonControlRemoveMinutes.classList.remove('controls-selected')
 
     
-    countDown()
-    howManyMinutes()
+    timer.countDown()
+    timer.howManyMinutes()
     
 })
 
@@ -104,7 +77,7 @@ buttonControlStop.addEventListener('click', function() {
     buttonControlAddMinutes.classList.remove('controls-selected')
     buttonControlRemoveMinutes.classList.remove('controls-selected')
 
-    timerReset()
+    timer.timerReset()
 
 })
 
@@ -121,15 +94,3 @@ buttonControlRemoveMinutes.addEventListener('click', function() {
     buttonControlPlay.classList.remove('controls-selected')
     buttonControlRemoveMinutes.classList.add('controls-selected')
 })
-
-function howManyMinutes() {
-    let newMinutes = prompt('Quantos minutos?')
-    
-    if(!newMinutes) {
-        timerReset()
-        return
-    }
-
-    minutes = newMinutes
-    updateTimerDisplay(minutes, 0)
-}
