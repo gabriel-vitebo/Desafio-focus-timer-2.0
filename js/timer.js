@@ -6,14 +6,26 @@ export default function Timer(
     seconds,
     minutes,
 
-
 ) {
     timerDisplay
     seconds
+
+
+    function addMinutes(minutes) {
+        const minutesToIncremented = Number(minutesDisplay.textContent) + minutes
+        minutesDisplay.textContent =  minutesToIncremented
+    }
+
+    function removeMinutes(minutes) {
+        const minutesToRemoved = Number(minutesDisplay.textContent) - minutes
+        minutesDisplay.textContent = minutesToRemoved
+    }
+    
+    
     function updateTimerDisplay(minutes, seconds) {
         minutesDisplay.textContent = String(minutes).padStart(2, "0")
         secondsDisplay.textContent = String(seconds).padStart(2, "0")
-    
+
     }
     
     function countDown() {
@@ -34,6 +46,8 @@ export default function Timer(
                 seconds = 60
                 --minutes
             }
+
+            
     
             updateTimerDisplay(minutes,String(seconds - 1), minutes)
     
@@ -65,6 +79,8 @@ export default function Timer(
         countDown,
         timerReset,
         clearTimeout,
-        howManyMinutes
+        howManyMinutes,
+        addMinutes,
+        removeMinutes
     }
 }
