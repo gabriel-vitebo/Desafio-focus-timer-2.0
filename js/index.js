@@ -14,7 +14,7 @@ let timer = Timer(
     timerDisplay,
     timerTimeOut,
     seconds,
-    minutes)
+    minutes,)
 
 
 const buttonSoundForest = document.querySelector('.sound-forest')
@@ -81,11 +81,13 @@ buttonControlStop.addEventListener('click', function() {
 
 })
 
+
 buttonControlAddMinutes.addEventListener('click', function() {
     buttonControlAddMinutes.classList.add('controls-selected')
     buttonControlStop.classList.remove('controls-selected')
     buttonControlPlay.classList.remove('controls-selected')
     buttonControlRemoveMinutes.classList.remove('controls-selected')
+    timer.addMinutes(5)
 })
 
 buttonControlRemoveMinutes.addEventListener('click', function() {
@@ -93,4 +95,7 @@ buttonControlRemoveMinutes.addEventListener('click', function() {
     buttonControlStop.classList.remove('controls-selected')
     buttonControlPlay.classList.remove('controls-selected')
     buttonControlRemoveMinutes.classList.add('controls-selected')
+
+    timer.removeMinutes(5)
 })
+
