@@ -1,3 +1,5 @@
+import { buttonSoundStop } from "./index.js"
+
 export default function Timer(
     minutesDisplay,
     secondsDisplay,
@@ -59,6 +61,7 @@ export default function Timer(
     function timerReset() {
         updateTimerDisplay(minutes, 0)
         clearTimeout(timerTimeOut)
+        buttonSoundStop()
     
     }
     

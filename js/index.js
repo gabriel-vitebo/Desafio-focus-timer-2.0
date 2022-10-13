@@ -29,9 +29,47 @@ const buttonControlRemoveMinutes = document.querySelector('.controls-remove_minu
 
 const buttonPressAudioForest = new Audio("./sounds/Floresta.wav")
 const buttonPressAudioRain = new Audio("./sounds/Chuva.wav")
+const buttonPressAudioCoffeShop = new Audio("./sounds/Cafeteria.wav")
+const buttonPressAudioFire = new Audio("./sounds/Lareira.wav")
 
 function buttonSoundPlayForest() {
+    buttonPressAudioRain.pause()
+    buttonPressAudioCoffeShop.pause()
+    buttonPressAudioFire.pause()
     buttonPressAudioForest.play()
+    buttonPressAudioForest.loop = true
+
+}
+
+function buttonSoundPlayRain() {
+    buttonPressAudioForest.pause()
+    buttonPressAudioCoffeShop.pause()
+    buttonPressAudioFire.pause()
+    buttonPressAudioRain.play()
+    buttonPressAudioRain.loop = true
+}
+
+function buttonSoundPlayCoffeShop() {
+    buttonPressAudioRain.pause()
+    buttonPressAudioForest.pause()
+    buttonPressAudioFire.pause()
+    buttonPressAudioCoffeShop.play()
+    buttonPressAudioCoffeShop.loop = true
+}
+
+function buttonSoundPlayFire() {
+    buttonPressAudioRain.pause()
+    buttonPressAudioCoffeShop.pause()
+    buttonPressAudioForest.pause()
+    buttonPressAudioFire.play()
+    buttonPressAudioFire.loop = true
+}
+
+export function buttonSoundStop() {
+    buttonPressAudioRain.pause()
+    buttonPressAudioCoffeShop.pause()
+    buttonPressAudioForest.pause()
+    buttonPressAudioFire.pause()
 }
 
 buttonSoundForest.addEventListener('click', function(){
@@ -49,6 +87,8 @@ buttonSoundRain.addEventListener('click', function(){
     buttonSoundForest.classList.remove('button-selected')
     buttonSoundCoffeeShop.classList.remove('button-selected')
     buttonSoundFire.classList.remove('button-selected')
+
+    buttonSoundPlayRain()
 })
 
 
@@ -57,6 +97,8 @@ buttonSoundCoffeeShop.addEventListener('click', function(){
     buttonSoundRain.classList.remove('button-selected')
     buttonSoundForest.classList.remove('button-selected')
     buttonSoundFire.classList.remove('button-selected')
+
+    buttonSoundPlayCoffeShop()
 })
 
 buttonSoundFire.addEventListener('click', function(){
@@ -64,6 +106,8 @@ buttonSoundFire.addEventListener('click', function(){
     buttonSoundCoffeeShop.classList.remove('button-selected')
     buttonSoundRain.classList.remove('button-selected')
     buttonSoundForest.classList.remove('button-selected')
+
+    buttonSoundPlayFire()
 })
 
 
@@ -87,6 +131,7 @@ buttonControlStop.addEventListener('click', function() {
     buttonControlRemoveMinutes.classList.remove('controls-selected')
 
     timer.timerReset()
+    buttonSoundStop()
 })
 
 
