@@ -27,12 +27,21 @@ const buttonControlStop = document.querySelector('.controls-stop')
 const buttonControlAddMinutes = document.querySelector('.controls-add_minutes')
 const buttonControlRemoveMinutes = document.querySelector('.controls-remove_minutes')
 
+const buttonPressAudioForest = new Audio("./sounds/Floresta.wav")
+const buttonPressAudioRain = new Audio("./sounds/Chuva.wav")
+
+function buttonSoundPlayForest() {
+    buttonPressAudioForest.play()
+}
+
 buttonSoundForest.addEventListener('click', function(){
     buttonSoundForest.classList.add('button-selected')
     buttonSoundRain.classList.remove('button-selected')
     buttonSoundCoffeeShop.classList.remove('button-selected')
     buttonSoundFire.classList.remove('button-selected')
 
+
+    buttonSoundPlayForest()
 })
 
 buttonSoundRain.addEventListener('click', function(){
@@ -78,7 +87,6 @@ buttonControlStop.addEventListener('click', function() {
     buttonControlRemoveMinutes.classList.remove('controls-selected')
 
     timer.timerReset()
-
 })
 
 
