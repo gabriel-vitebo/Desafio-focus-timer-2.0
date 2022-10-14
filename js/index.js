@@ -30,8 +30,18 @@ const buttonControlAddMinutes = document.querySelector('.controls-add_minutes')
 const buttonControlRemoveMinutes = document.querySelector('.controls-remove_minutes')
 
 
+export function removeControlTimeSelected() {
+    buttonSoundForest.classList.remove('button-selected')
+    buttonSoundRain.classList.remove('button-selected')
+    buttonSoundCoffeeShop.classList.remove('button-selected')
+    buttonSoundFire.classList.remove('button-selected')
+    buttonControlAddMinutes.classList.remove('controls-selected')
+    buttonControlStop.classList.remove('controls-selected')
+    buttonControlPlay.classList.remove('controls-selected')
+    buttonControlRemoveMinutes.classList.remove('controls-selected')
+}
 
-
+removeControlTimeSelected()
 
 buttonSoundForest.addEventListener('click', function(){
     buttonSoundForest.classList.add('button-selected')

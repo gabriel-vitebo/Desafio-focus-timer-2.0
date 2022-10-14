@@ -1,3 +1,5 @@
+import { removeControlTimeSelected } from "./index.js"
+
 export function Timer(
     minutesDisplay,
     secondsDisplay,
@@ -60,6 +62,7 @@ export function Timer(
         updateTimerDisplay(minutes, 0)
         clearTimeout(timerTimeOut)
         sound.buttonSoundStop()
+        removeControlTimeSelected()
     }
     
     function howManyMinutes() {
