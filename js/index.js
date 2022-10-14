@@ -1,20 +1,20 @@
-import Timer from "./timer.js"
+import {Timer} from "./timer.js"
+import {Sounds} from "./sounds.js"
 
 
 const timerDisplay = document.querySelector('.timer')
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.second')
-let minutes = Number(minutesDisplay.textContent)
-let seconds
-let timerTimeOut
+
+
+let sound = Sounds()
 
 let timer = Timer(
     minutesDisplay,
     secondsDisplay,
     timerDisplay,
-    timerTimeOut,
-    seconds,
-    minutes,)
+    sound
+    )
 
 
 const buttonSoundForest = document.querySelector('.sound-forest')
@@ -22,55 +22,16 @@ const buttonSoundRain = document.querySelector('.sound-rain')
 const buttonSoundCoffeeShop = document.querySelector('.sound-coffee_shop')
 const buttonSoundFire = document.querySelector('.sound-fire')
 
+
+
 const buttonControlPlay = document.querySelector('.controls-play')
 const buttonControlStop = document.querySelector('.controls-stop')
 const buttonControlAddMinutes = document.querySelector('.controls-add_minutes')
 const buttonControlRemoveMinutes = document.querySelector('.controls-remove_minutes')
 
-const buttonPressAudioForest = new Audio("./sounds/Floresta.wav")
-const buttonPressAudioRain = new Audio("./sounds/Chuva.wav")
-const buttonPressAudioCoffeShop = new Audio("./sounds/Cafeteria.wav")
-const buttonPressAudioFire = new Audio("./sounds/Lareira.wav")
 
-function buttonSoundPlayForest() {
-    buttonPressAudioRain.pause()
-    buttonPressAudioCoffeShop.pause()
-    buttonPressAudioFire.pause()
-    buttonPressAudioForest.play()
-    buttonPressAudioForest.loop = true
 
-}
 
-function buttonSoundPlayRain() {
-    buttonPressAudioForest.pause()
-    buttonPressAudioCoffeShop.pause()
-    buttonPressAudioFire.pause()
-    buttonPressAudioRain.play()
-    buttonPressAudioRain.loop = true
-}
-
-function buttonSoundPlayCoffeShop() {
-    buttonPressAudioRain.pause()
-    buttonPressAudioForest.pause()
-    buttonPressAudioFire.pause()
-    buttonPressAudioCoffeShop.play()
-    buttonPressAudioCoffeShop.loop = true
-}
-
-function buttonSoundPlayFire() {
-    buttonPressAudioRain.pause()
-    buttonPressAudioCoffeShop.pause()
-    buttonPressAudioForest.pause()
-    buttonPressAudioFire.play()
-    buttonPressAudioFire.loop = true
-}
-
-export function buttonSoundStop() {
-    buttonPressAudioRain.pause()
-    buttonPressAudioCoffeShop.pause()
-    buttonPressAudioForest.pause()
-    buttonPressAudioFire.pause()
-}
 
 buttonSoundForest.addEventListener('click', function(){
     buttonSoundForest.classList.add('button-selected')
@@ -79,7 +40,7 @@ buttonSoundForest.addEventListener('click', function(){
     buttonSoundFire.classList.remove('button-selected')
 
 
-    buttonSoundPlayForest()
+    sound.buttonSoundPlayForest()
 })
 
 buttonSoundRain.addEventListener('click', function(){
@@ -88,7 +49,7 @@ buttonSoundRain.addEventListener('click', function(){
     buttonSoundCoffeeShop.classList.remove('button-selected')
     buttonSoundFire.classList.remove('button-selected')
 
-    buttonSoundPlayRain()
+    sound.buttonSoundPlayRain()
 })
 
 
@@ -98,7 +59,7 @@ buttonSoundCoffeeShop.addEventListener('click', function(){
     buttonSoundForest.classList.remove('button-selected')
     buttonSoundFire.classList.remove('button-selected')
 
-    buttonSoundPlayCoffeShop()
+    sound.buttonSoundPlayCoffeShop()
 })
 
 buttonSoundFire.addEventListener('click', function(){
@@ -107,7 +68,7 @@ buttonSoundFire.addEventListener('click', function(){
     buttonSoundRain.classList.remove('button-selected')
     buttonSoundForest.classList.remove('button-selected')
 
-    buttonSoundPlayFire()
+    sound.buttonSoundPlayFire()
 })
 
 
@@ -131,7 +92,6 @@ buttonControlStop.addEventListener('click', function() {
     buttonControlRemoveMinutes.classList.remove('controls-selected')
 
     timer.timerReset()
-    buttonSoundStop()
 })
 
 

@@ -1,16 +1,14 @@
-import { buttonSoundStop } from "./index.js"
-
-export default function Timer(
+export function Timer(
     minutesDisplay,
     secondsDisplay,
     timerDisplay,
-    timerTimeOut,
-    seconds,
-    minutes,
+    sound
 
 ) {
     timerDisplay
-    seconds
+    let seconds
+    let minutes = Number(minutesDisplay.textContent)
+    let timerTimeOut
 
 
     function addMinutes(minutes) {
@@ -45,7 +43,7 @@ export default function Timer(
     
             
             if(seconds <= 0) {
-                seconds = 60
+                seconds = 10
                 --minutes
             }
 
@@ -61,8 +59,7 @@ export default function Timer(
     function timerReset() {
         updateTimerDisplay(minutes, 0)
         clearTimeout(timerTimeOut)
-        buttonSoundStop()
-    
+        sound.buttonSoundStop()
     }
     
     function howManyMinutes() {
