@@ -7,40 +7,31 @@ export function Sounds() {
 
 
     function buttonSoundPlayForest() {
-        buttonPressAudioRain.pause()
-        buttonPressAudioCoffeShop.pause()
-        buttonPressAudioFire.pause()
+        buttonSoundStop()
         buttonPressAudioForest.play()
         buttonPressAudioForest.loop = true
     
     }
     
     function buttonSoundPlayRain() {
-        buttonPressAudioForest.pause()
-        buttonPressAudioCoffeShop.pause()
-        buttonPressAudioFire.pause()
+        buttonSoundStop()
         buttonPressAudioRain.play()
         buttonPressAudioRain.loop = true
     }
     
     function buttonSoundPlayCoffeShop() {
-        buttonPressAudioRain.pause()
-        buttonPressAudioForest.pause()
-        buttonPressAudioFire.pause()
+        buttonSoundStop()
         buttonPressAudioCoffeShop.play()
         buttonPressAudioCoffeShop.loop = true
     }
     
     function buttonSoundPlayFire() {
-        buttonPressAudioRain.pause()
-        buttonPressAudioCoffeShop.pause()
-        buttonPressAudioForest.pause()
+        buttonSoundStop()
         buttonPressAudioFire.play()
         buttonPressAudioFire.loop = true
     }
     
     function buttonSoundStop() {
-        console.log(buttonPressAudioRain.pause, buttonPressAudioCoffeShop.pause, buttonPressAudioForest.pause, buttonPressAudioFire.pause)
         buttonPressAudioRain.pause()
         buttonPressAudioCoffeShop.pause()
         buttonPressAudioForest.pause()
