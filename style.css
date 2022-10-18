@@ -7,6 +7,7 @@
 :root {
     --timer-color: #323238;
     --bg: #FFFFFF;
+    --bg-darkmode: #121214;
     --bg-card: #E1E1E6;
     --bg-card-selected: #02799D;
     --bg-stroke: #323238;
@@ -21,9 +22,10 @@ body {
     font-size: 1.6rem;
     font-family: var(--ff-main);
     display: grid;
-    justify-content: center;
-    align-items: center;
+    place-items: center;
     min-height: 100vh;
+    position: relative;
+    
 }
 
 button {
@@ -34,25 +36,60 @@ button {
 }
 
 .container {
-    display: flex;
-    gap: 19.2rem;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "timer butons-sound"
+    "butons-control butons-sound";
+    place-items: center;
+    margin: 0 10rem;
+    
+}
+
+.container > section:nth-child(2) > div:nth-child(1) {
+    margin-right: 19.2rem;
+}
+
+.light-dark-mode {
+    display: grid;
+    position: absolute;
+    right: 6rem;
+    top: 6rem;
+}
+
+.light-mode {
+    position: relative;
+    cursor: pointer;
+}
+
+.dark-mode {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+}
+
+.hide-mode {
+    display: none;
 }
 
 
 .timer {
     display: flex;
+    grid-area: timer;
 }
 
 .timer span {
-    font-size: 12.6rem;
+    font-size:12.6rem;
     margin-bottom: 3rem;
 }
 
 .controls-container {
     display: flex;
     gap: 4rem;
+    grid-area: butons-control;
 }
+
 
 .controls {
     border: none;
@@ -63,6 +100,8 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3.2rem;
+    grid-area: butons-sound;
+    
 }
 
 .button .bg-button {
