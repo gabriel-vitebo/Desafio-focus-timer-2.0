@@ -151,4 +151,4 @@ buttonLightMode.addEventListener('click', () => {
     buttonLightMode.classList.add('hide')
 })
 
-console.log(buttonLightMode)
+
