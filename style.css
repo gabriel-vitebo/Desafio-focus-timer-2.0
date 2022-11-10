@@ -7,7 +7,6 @@
 :root {
     --timer-color: #323238;
     --bg: #FFFFFF;
-    --bg-darkmode: #121214;
     --bg-card: #E1E1E6;
     --bg-card-selected: #02799D;
     --bg-stroke: #323238;
@@ -25,7 +24,23 @@ body {
     place-items: center;
     min-height: 100vh;
     position: relative;
-    
+}
+
+body.light-mode {
+    --timer-color: #323238;
+    --bg: #FFFFFF;
+    --bg-card: #E1E1E6;
+    --bg-card-selected: #02799D;
+    --bg-stroke: #323238;
+}
+
+body.dark-mode {
+    --timer-color: #FFFFFF;
+    --bg-card: #29292E;
+    --bg-card-selected: #0A3442;
+    --bg: #121214;
+    --bg-stroke: #C4C4CC;
+
 }
 
 button {
@@ -50,26 +65,26 @@ button {
     margin-right: 19.2rem;
 }
 
-.light-dark-mode {
+.modes {
     display: grid;
     position: absolute;
     right: 6rem;
     top: 6rem;
 }
 
-.light-mode {
+.button-light-mode {
     position: relative;
     cursor: pointer;
 }
 
-.dark-mode {
+.button-dark-mode {
     position: absolute;
     top: 0px;
     left: 0px;
     cursor: pointer;
 }
 
-.hide-mode {
+.hide {
     display: none;
 }
 
@@ -77,11 +92,13 @@ button {
 .timer {
     display: flex;
     grid-area: timer;
+    color: var(--bg-stroke);
 }
 
 .timer span {
     font-size:12.6rem;
     margin-bottom: 3rem;
+    color: var(--bg-stroke);
 }
 
 .controls-container {

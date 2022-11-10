@@ -122,3 +122,33 @@ buttonControlRemoveMinutes.addEventListener('click', function() {
     timer.removeMinutes(5)
 })
 
+const buttonDarkMode = document.querySelector(
+  "body > main > section.modes > svg.button-dark-mode"
+)
+
+const buttonLightMode = document.querySelector(
+  "body > main > section.modes > svg.button-light-mode"
+)
+
+const changeMode = document.querySelector('body')
+
+function removeAllClasses() {
+    changeMode.classList.remove('dark-mode')
+    changeMode.classList.remove('light-mode')
+    buttonDarkMode.classList.remove('hide')
+    buttonLightMode.classList.remove('hide')
+}
+
+buttonDarkMode.addEventListener('click', () => {
+    removeAllClasses()
+    changeMode.classList.add("dark-mode")
+    buttonDarkMode.classList.add('hide')
+})
+
+buttonLightMode.addEventListener('click', () => {
+    removeAllClasses()
+    changeMode.classList.add("light-mode")
+    buttonLightMode.classList.add('hide')
+})
+
+console.log(buttonLightMode)
