@@ -36,7 +36,6 @@ body {
     display: grid;
     place-items: center;
     min-height: 100vh;
-    position: relative;
 }
 
 body.light-mode {
@@ -67,10 +66,11 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-    "timer butons-sound"
-    "butons-control butons-sound";
+    "timer butons-sound modes"
+    "butons-control butons-sound modes";
     place-items: center;
     margin: 0 10rem;
+    align-items: flex-start;
     
 }
 
@@ -80,21 +80,9 @@ button {
 
 .modes {
     display: grid;
-    position: absolute;
-    right: 6rem;
-    top: 6rem;
-}
+    grid-area: modes;
+    margin-left: 5rem;
 
-.button-light-mode {
-    position: relative;
-    cursor: pointer;
-}
-
-.button-dark-mode {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    cursor: pointer;
 }
 
 .hide {
@@ -135,7 +123,7 @@ button {
 
 
 .volume-bar {
-    -webkit-appearance: none;
+    appearance: none;
     background-color: var(--bg-stroke);
     outline: none;
     border-radius: .5rem;
