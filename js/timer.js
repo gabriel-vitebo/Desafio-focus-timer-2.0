@@ -1,89 +1,43 @@
-import { removeControlTimeSelected } from "./index.js"
+export class Timer {
+  secondsDisplay = document.querySelector(".second")
+  minutesDisplay = document.querySelector(".minutes")
+  timerTimeOut
+  seconds
+  minutes
+  isFinished
+  
 
-export function Timer(
-    minutesDisplay,
-    secondsDisplay,
-    timerDisplay,
-    sound
+  updateTimerDisplay(minutes, seconds) {
+    this.minutesDisplay.textContent = String(minutes).padStart(2, "0")
+    this.secondsDisplay.textContent = String(seconds).padStart(2, "0")
+  }
 
-) {
-    timerDisplay
-    let seconds
-    let minutes = Number(minutesDisplay.textContent)
-    let timerTimeOut
+  timerReset() {
+    updateTimerDisplay(minutes, 0)
+    clearTimeout(this.timerTimeOut)
+  }
 
+  countDown() {
+    this.timerTimeOut = setTimeout(() => {
+      this.seconds = Number(this.secondsDisplay.textContent)
+      this.minutes = Number(this.minutesDisplay.textContent)
+      this.isFinished = this.minutes <= 0 && seconds <= 0
 
-    function addMinutes(minutes) {
-        const minutesToIncremented = Number(minutesDisplay.textContent) + minutes
-        minutesDisplay.textContent =  minutesToIncremented
-    }
+      this.updateTimerDisplay(this.minutes, 0)
 
-    function removeMinutes(minutes) {
-        const minutesToRemoved = Number(minutesDisplay.textContent) - minutes
-        minutesDisplay.textContent = minutesToRemoved
-    }
-    
-    
-    function updateTimerDisplay(minutes, seconds) {
-        minutesDisplay.textContent = String(minutes).padStart(2, "0")
-        secondsDisplay.textContent = String(seconds).padStart(2, "0")
+      if (this.isFinished) {
+        timerReset()
+        return
+      }
 
-    }
-    
-    function countDown() {
-       timerTimeOut = setTimeout(function() {
-            seconds = Number(secondsDisplay.textContent)
-            let minutes = Number(minutesDisplay.textContent)
-            let isFinished = minutes <= 0 && seconds <= 0
-    
-            updateTimerDisplay(minutes, 0)
-            
-            if(isFinished) {
-                timerReset()
-                return
-            }
-    
-            
-            if(seconds <= 0) {
-                seconds = 60
-                --minutes
-            }
+      if (this.seconds <= 0) {
+        this.seconds = 60
+        --this.minutes
+      }
 
-            
-    
-            updateTimerDisplay(minutes,String(seconds - 1), minutes)
-    
-    
-            countDown()
-        }, 1000)  
-    }
-    
-    function timerReset() {
-        updateTimerDisplay(minutes, 0)
-        clearTimeout(timerTimeOut)
-        sound.buttonSoundStop()
-        removeControlTimeSelected()
-    }
-    
-    function howManyMinutes() {
-        let newMinutes = prompt('Quantos minutos?')
-        
-        if(!newMinutes) {
-            timerReset()
-            return
-        }
-    
-        minutes = newMinutes
-        updateTimerDisplay(minutes, 0)
-    }
+      this.updateTimerDisplay(this.minutes, String(this.seconds - 1), this.minutes)
 
-    return {
-        updateTimerDisplay,
-        countDown,
-        timerReset,
-        clearTimeout,
-        howManyMinutes,
-        addMinutes,
-        removeMinutes
-    }
+      this.countDown()
+    }, 100)
+  }
 }
