@@ -1,12 +1,11 @@
 import { Timer } from "./Timer.js"
 const timer = new Timer()
 
-export class ControlsTimer {
-  
+export class ControlsTimer extends Timer {
   newMinutes
   minutesToRemoved
   minutesToIncremented
-  
+
   howManyMinutes() {
     this.newMinutes = prompt("Quantos Minutos você deseja?")
 
@@ -14,23 +13,27 @@ export class ControlsTimer {
       timer.timerReset()
       return
     }
-    
+
     timer.minutes = this.newMinutes
     timer.updateTimerDisplay(timer.minutes, 0)
   }
-  
+
   removeMinutes(minutes) {
-    this.minutesToRemoved =
-    Number(timer.minutesDisplay.textContent) - timer.minutes
+    this.minutesToRemoved = Number(timer.minutesDisplay.textContent) - minutes
     timer.minutesDisplay.textContent = this.minutesToRemoved
   }
-  
+
   addMinutes(minutes) {
     this.minutesToIncremented =
-    Number(timer.minutesDisplay.textContent) + timer.minutes
+      Number(timer.minutesDisplay.textContent) + minutes
     timer.minutesDisplay.textContent = this.minutesToIncremented
   }
-  
+
+  timerReset() {
+    timer.updateTimerDisplay(timer.minutes, 0)
+    clearTimeout(timer.timerTimeOut)
+  }
+
   choiceMinutes = document
     .querySelector(".timer")
     .addEventListener("click", () => {
@@ -43,7 +46,21 @@ export class ControlsTimer {
       timer.countDown()
     })
 
-  addFiveMinutes = document.querySelector(".controls-add_minutes").addEventListener('click', () => {
-    this.addMinutes(5)
+  addFiveMinutes = document
+    .querySelector(".controls-add_minutes")
+    .addEventListener("click", () => {
+      this.addMinutes(5)
+    })
+
+  removeFiveMinutes = document
+    .querySelector(".controls-remove_minutes")
+    .addEventListener("click", () => {
+      this.removeMinutes(5)
+    })
+
+  stopTimer = document
+  .querySelector(".controls-stop")
+  .addEventListener('click', () => {
+    this.timerReset()
   })
 }
