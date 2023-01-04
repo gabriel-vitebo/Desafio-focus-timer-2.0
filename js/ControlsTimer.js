@@ -6,6 +6,7 @@ const pauseTimer = document.querySelector(".controls-pause")
 const stopTimer = document.querySelector(".controls-stop")
 const addFiveMinutes = document.querySelector(".controls-add_minutes")
 const removeFiveMinutes = document.querySelector(".controls-remove_minutes")
+const chooseHowManyMinutes = document.querySelector(".timer")
 
 
 export function ControlsTimer() {
@@ -35,6 +36,10 @@ export function ControlsTimer() {
 
   removeFiveMinutes.addEventListener('click', () => {
     timer.removeFiveMinutes(5)
+  })
+
+  chooseHowManyMinutes.addEventListener('click', () => {
+    timer.howManyMinutes()
   })
 }
 
