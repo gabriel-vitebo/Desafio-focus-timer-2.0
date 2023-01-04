@@ -57,4 +57,9 @@ export function ControlsAudio() {
     firePlaceAudio.play()
     firePlaceAudio.loop = true
   })
+
+  return {
+    pauseMusic,
+    removeAllSelected
+  }
 }

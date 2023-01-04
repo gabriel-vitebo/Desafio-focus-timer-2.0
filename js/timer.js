@@ -1,3 +1,7 @@
+import { ControlsAudio } from "./ControlsAudio.js"
+
+const controlsAudio = ControlsAudio()
+
 const minutesDisplay = document.querySelector(".minutes")
 const secondsDisplay = document.querySelector(".second")
 
@@ -54,6 +58,8 @@ export function Timer() {
 
       if (isFinished) {
         timerReset()
+        controlsAudio.pauseMusic()
+        controlsAudio.removeAllSelected()
         return
       }
 

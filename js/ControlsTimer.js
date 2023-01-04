@@ -1,4 +1,7 @@
 import { Timer } from "./timer.js";
+import { ControlsAudio } from "./ControlsAudio.js";
+
+const controlsAudio = ControlsAudio()
 const timer = Timer()
 
 const playTimer = document.querySelector(".controls-play")
@@ -28,6 +31,8 @@ export function ControlsTimer() {
     playTimer.classList.remove("hide")
     pauseTimer.classList.add("hide")
     timer.timerReset()
+    controlsAudio.pauseMusic()
+    controlsAudio.removeAllSelected()
   })
 
   addFiveMinutes.addEventListener('click', () => {
