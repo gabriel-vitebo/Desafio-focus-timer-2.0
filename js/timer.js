@@ -9,6 +9,15 @@ export function Timer() {
     minutesDisplay.textContent = String(minutes).padStart(2, "0")
     secondsDisplay.textContent = String(seconds).padStart(2, "0")
   }
+  function addFiveMinutes(minutes) {
+    const minutesToIncremented = Number(minutesDisplay.textContent) + minutes
+    minutesDisplay.textContent = minutesToIncremented
+  }
+
+  function removeFiveMinutes(minutes) {
+    const minutesToRemoved = Number(minutesDisplay.textContent) - minutes
+    minutesDisplay.textContent = minutesToRemoved
+  }
 
   function timerReset() {
     updateTimerDisplay(minutes, 0)
@@ -57,5 +66,7 @@ export function Timer() {
     howManyMinutes,
     countDown,
     timerReset,
+    addFiveMinutes,
+    removeFiveMinutes,
   }
 }
