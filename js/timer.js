@@ -4,6 +4,7 @@ const secondsDisplay = document.querySelector(".second")
 export function Timer() {
   let timerTimeOut
   let minutes = Number(minutesDisplay.textContent)
+  let isPause = true
 
   function updateTimerDisplay(minutes, seconds) {
     minutesDisplay.textContent = String(minutes).padStart(2, "0")
@@ -35,13 +36,19 @@ export function Timer() {
     minutes = newMinutes
     updateTimerDisplay(minutes, 0)
   }
+  function pause() {
+    if(isPause = true) {
+      clearTimeout(timerTimeOut)
+    }
 
+  }
 
   function countDown() {
     timerTimeOut = setTimeout(() => {
       let seconds = Number(secondsDisplay.textContent)
       let minutes = Number(minutesDisplay.textContent)
       let isFinished = minutes <= 0 && seconds <= 0
+      isPause = false
 
       updateTimerDisplay(minutes, 0)
 
@@ -54,13 +61,14 @@ export function Timer() {
         seconds = 60
         --minutes
       }
-
+      
       updateTimerDisplay(minutes, String(seconds - 1), minutes)
 
       countDown()
     }, 1000)
 
   }
+
   return {
     updateTimerDisplay,
     howManyMinutes,
@@ -68,5 +76,7 @@ export function Timer() {
     timerReset,
     addFiveMinutes,
     removeFiveMinutes,
+    pause,
+    isPause
   }
 }

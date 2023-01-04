@@ -7,8 +7,8 @@ const stopTimer = document.querySelector(".controls-stop")
 const addFiveMinutes = document.querySelector(".controls-add_minutes")
 const removeFiveMinutes = document.querySelector(".controls-remove_minutes")
 
-export function ControlsTimer() {
 
+export function ControlsTimer() {
   playTimer.addEventListener('click', () => {
     timer.countDown()
     playTimer.classList.add('hide')
@@ -18,7 +18,10 @@ export function ControlsTimer() {
   pauseTimer.addEventListener('click', () => {
     playTimer.classList.remove("hide")
     pauseTimer.classList.add("hide")
+    timer.isPause = true
+    timer.pause()
   })
+
 
   stopTimer.addEventListener('click', () => {
     playTimer.classList.remove("hide")
