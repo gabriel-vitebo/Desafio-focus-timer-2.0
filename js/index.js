@@ -1,4 +1,5 @@
-import { Timer } from "./Timer.js";
+import { Timer } from "./timer.js";
 import { ControlsTimer } from "./ControlsTimer.js";
 
-const controlsTimer = new ControlsTimer
+const timer = Timer()
+const controlsTimer = ControlsTimer()

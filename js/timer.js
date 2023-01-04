@@ -1,43 +1,61 @@
-export class Timer {
-  secondsDisplay = document.querySelector(".second")
-  minutesDisplay = document.querySelector(".minutes")
-  timerTimeOut
-  seconds
-  minutes
-  isFinished
-  
+const minutesDisplay = document.querySelector(".minutes")
+const secondsDisplay = document.querySelector(".second")
 
-  updateTimerDisplay(minutes, seconds) {
-    this.minutesDisplay.textContent = String(minutes).padStart(2, "0")
-    this.secondsDisplay.textContent = String(seconds).padStart(2, "0")
+export function Timer() {
+  let timerTimeOut
+  let minutes = Number(minutesDisplay.textContent)
+
+  function updateTimerDisplay(minutes, seconds) {
+    minutesDisplay.textContent = String(minutes).padStart(2, "0")
+    secondsDisplay.textContent = String(seconds).padStart(2, "0")
   }
 
-  timerReset() {
+  function timerReset() {
     updateTimerDisplay(minutes, 0)
-    clearTimeout(this.timerTimeOut)
+    clearTimeout(timerTimeOut)
   }
 
-  countDown() {
-    this.timerTimeOut = setTimeout(() => {
-      this.seconds = Number(this.secondsDisplay.textContent)
-      this.minutes = Number(this.minutesDisplay.textContent)
-      this.isFinished = this.minutes <= 0 && seconds <= 0
+  function howManyMinutes() {
+    let newMinutes = prompt("Quantos minutos deseja?")
 
-      this.updateTimerDisplay(this.minutes, 0)
+    if (!newMinutes) {
+      timerReset()
+      return
+    }
 
-      if (this.isFinished) {
+    minutes = newMinutes
+    updateTimerDisplay(minutes, 0)
+  }
+
+
+  function countDown() {
+    timerTimeOut = setTimeout(() => {
+      let seconds = Number(secondsDisplay.textContent)
+      let minutes = Number(minutesDisplay.textContent)
+      let isFinished = minutes <= 0 && seconds <= 0
+
+      updateTimerDisplay(minutes, 0)
+
+      if (isFinished) {
         timerReset()
         return
       }
 
-      if (this.seconds <= 0) {
-        this.seconds = 60
-        --this.minutes
+      if (seconds <= 0) {
+        seconds = 60
+        --minutes
       }
 
-      this.updateTimerDisplay(this.minutes, String(this.seconds - 1), this.minutes)
+      updateTimerDisplay(minutes, String(seconds - 1), minutes)
 
-      this.countDown()
-    }, 100)
+      countDown()
+    }, 1000)
+
+  }
+  return {
+    updateTimerDisplay,
+    howManyMinutes,
+    countDown,
+    timerReset,
   }
 }
