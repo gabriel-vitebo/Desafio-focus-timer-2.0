@@ -44,7 +44,6 @@ export function Timer() {
     if(isPause = true) {
       clearTimeout(timerTimeOut)
     }
-
   }
 
   function countDown() {

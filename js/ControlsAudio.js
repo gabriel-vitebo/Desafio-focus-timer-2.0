@@ -9,7 +9,19 @@ const playRainAudio = document.querySelector(".sound-rain")
 const playCoffeeAudio = document.querySelector(".sound-coffee")
 const playFirePlaceAudio = document.querySelector(".sound-fire")
 
+const volumeForest = document.querySelector("#volume-forest")
+const volumeRain = document.querySelector("#volume-rain")
+const volumeCoffee = document.querySelector("#volume-coffe")
+const volumeFirePlace = document.querySelector("#volume-fire")
+
 export function ControlsAudio() {
+
+  function setForestVol(value) {
+    forestAudio.volume = value / 100
+    rainAudio.volume = value / 100
+    coffeeAudio.volume = value / 100
+    firePlaceAudio.volume = value / 100
+  }
 
   function removeAllSelected() {
     playForestAudio.classList.remove('button-selected')
@@ -57,6 +69,39 @@ export function ControlsAudio() {
     firePlaceAudio.play()
     firePlaceAudio.loop = true
   })
+
+  volumeForest.addEventListener("change", () => {
+    setForestVol(volumeForest.value)
+  })
+
+  volumeForest.addEventListener("input", () => {
+    setForestVol(volumeForest.value)
+  })
+  
+  volumeRain.addEventListener('change', () => {
+    setForestVol(volumeRain.value)
+  })
+
+  volumeRain.addEventListener('input', () => {
+    setForestVol(volumeRain.value)
+  })
+
+  volumeCoffee.addEventListener('change', () => {
+    setForestVol(volumeCoffee.value)
+  })
+
+  volumeCoffee.addEventListener('input', () => {
+    setForestVol(volumeCoffee.value)
+  })
+
+  volumeFirePlace.addEventListener('change', () => {
+    setForestVol(volumeFirePlace.value)
+  })
+
+  volumeFirePlace.addEventListener('input', () => {
+    setForestVol(volumeFirePlace.value)
+  })
+
 
   return {
     pauseMusic,
