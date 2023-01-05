@@ -38,6 +38,7 @@ body {
     min-height: 100vh;
 }
 
+
 body.light-mode {
     --timer-color: #323238;
     --bg: #FFFFFF;
@@ -176,5 +177,9 @@ button {
 
 .controls-selected path {
     fill: var(--bg-card-selected);
+}
+
+.modes {
+    cursor: pointer;
 }
 
