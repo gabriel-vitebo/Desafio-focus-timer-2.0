@@ -18,8 +18,17 @@ export function ControlsAudio() {
 
   function setForestVol(value) {
     forestAudio.volume = value / 100
+  }
+
+  function setRainVol(value) {
     rainAudio.volume = value / 100
+  }
+
+  function setCoffeeVol(value) {
     coffeeAudio.volume = value / 100
+  }
+
+  function setFirePlaceVol(value) {
     firePlaceAudio.volume = value / 100
   }
 
@@ -79,27 +88,27 @@ export function ControlsAudio() {
   })
   
   volumeRain.addEventListener('change', () => {
-    setForestVol(volumeRain.value)
+    setRainVol(volumeRain.value)
   })
 
   volumeRain.addEventListener('input', () => {
-    setForestVol(volumeRain.value)
+    setRainVol(volumeRain.value)
   })
 
   volumeCoffee.addEventListener('change', () => {
-    setForestVol(volumeCoffee.value)
+    setCoffeeVol(volumeCoffee.value)
   })
 
   volumeCoffee.addEventListener('input', () => {
-    setForestVol(volumeCoffee.value)
+    setCoffeeVol(volumeCoffee.value)
   })
 
   volumeFirePlace.addEventListener('change', () => {
-    setForestVol(volumeFirePlace.value)
+    setFirePlaceVol(volumeFirePlace.value)
   })
 
   volumeFirePlace.addEventListener('input', () => {
-    setForestVol(volumeFirePlace.value)
+    setFirePlaceVol(volumeFirePlace.value)
   })
 
 

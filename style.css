@@ -208,7 +208,8 @@ button {
 
     .controls-container {
         margin: 0.5rem 0 3rem;
-        gap: 3rem;
+        justify-content: center;
+        gap: 2rem;
     }
 
     .controls-container svg{
@@ -249,6 +250,7 @@ button {
 
     .modes {
         display: flex;
+        justify-content: flex-end;
         margin: 0;
         width: 22rem;
     }

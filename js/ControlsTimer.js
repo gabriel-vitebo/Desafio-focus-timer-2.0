@@ -46,5 +46,10 @@ export function ControlsTimer() {
   chooseHowManyMinutes.addEventListener('click', () => {
     timer.howManyMinutes()
   })
+
+  return {
+    playTimer,
+    pauseTimer
+  }
 }
 
