@@ -82,8 +82,8 @@ button {
 .modes {
     display: grid;
     grid-area: modes;
-    margin-left: 5rem;
-
+    margin: 0 5rem 0 5rem;
+    cursor: pointer;
 }
 
 .hide {
@@ -179,7 +179,78 @@ button {
     fill: var(--bg-card-selected);
 }
 
-.modes {
-    cursor: pointer;
-}
+@media (max-width: 700px) {
+    body {
+        display: flex;
+        max-width: 70rem;
+        max-height: 70rem;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        align-items: center;
+    }
 
+    .container > section:nth-child(2) > div:nth-child(1) {
+    margin-right: 0;
+    }
+
+    .timer {
+        justify-content: center;
+        height: 10rem;
+    }
+
+    .timer span {
+        font-size: 8.3rem;
+    }
+
+    .controls-container {
+        margin: 0.5rem 0 3rem;
+        gap: 3rem;
+    }
+
+    .controls-container svg{
+        width: 3.4rem;
+        height: 3.4rem;
+    }
+    
+    .sounds-container {
+        gap: 3rem;
+    }
+
+    .sounds-container svg{
+        width: 8.9rem;
+        height: 9.6rem;
+    }
+
+    .container-volume {
+        width: 8.9rem;
+        height: 9.6rem;
+        border-radius: 1.2rem;
+    }
+
+    .volume-bar {
+        position: absolute;
+        left: 0.9rem;
+        bottom: 1.3rem;
+        width: 80%;
+    }
+
+    .volume-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 1.3rem;
+        border-radius: 50%;
+        background: var(--bg-stroke);
+        width: 1.3rem;
+    }
+
+    .modes {
+        display: flex;
+        margin: 0;
+        width: 22rem;
+    }
+
+}
