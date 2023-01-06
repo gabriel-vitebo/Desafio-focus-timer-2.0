@@ -25,8 +25,7 @@ export function ControlsTimer() {
     timer.isPause = true
     timer.pause()
   })
-
-
+  
   stopTimer.addEventListener('click', () => {
     playTimer.classList.remove("hide")
     pauseTimer.classList.add("hide")

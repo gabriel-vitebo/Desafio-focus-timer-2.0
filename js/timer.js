@@ -1,13 +1,10 @@
 import { ControlsAudio } from "./ControlsAudio.js"
-import { ControlsTimer } from "./ControlsTimer.js"
-
 const controlsAudio = ControlsAudio()
-const controlsTimer = ControlsTimer()
 
 const secondsDisplay = document.querySelector(".second")
+const minutesDisplay = document.querySelector(".minutes")
 
 export function Timer() {
-  const minutesDisplay = document.querySelector(".minutes")
   let timerTimeOut
   let minutes = Number(minutesDisplay.textContent)
   let isPause = true
@@ -61,8 +58,6 @@ export function Timer() {
         timerReset()
         controlsAudio.pauseMusic()
         controlsAudio.removeAllSelected()
-        controlsTimer.playTimer.classList.remove("hide")
-        controlsTimer.pauseTimer.classList.add("hide")
         return
       }
 
@@ -86,6 +81,7 @@ export function Timer() {
     addFiveMinutes,
     removeFiveMinutes,
     pause,
-    isPause
+    isPause,
+    
   }
 }
