@@ -6,7 +6,7 @@ Nesse programa eu fiz um cronometro usando as técnicas pomodoro, onde o usuári
 ![preview](./.github/preview-lightmode.png) 
 ![preview](./.github/preview-darkmode.png)
 
-[Acesse o projeto aqui!](https://gabriel-vitebo.github.io/focus-timmer/)
+[Acesse o projeto aqui!](https://gabriel-vitebo.github.io/Desafio-focus-timer-2.0/)
 
 ## O que consigo fazer nesse Timer?
  - Ao clicar no display, você pode configurar quantos minutos deseja, abaixo do display você encontra os controles para o timer, quando você clica no primeiro botão "play", aparecerá o botão de pause, ao lado está o botão para todo o timer, reiniciando o display. E por fim, estão dois botoes para acrescentar ou remover 5 minutos no timer.
