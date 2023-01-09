@@ -13,10 +13,18 @@ const chooseHowManyMinutes = document.querySelector(".timer")
 
 
 export function ControlsTimer() {
+
   playTimer.addEventListener('click', () => {
-    timer.countDown()
+    timer.countDown(resetPlayButton)
     playTimer.classList.add('hide')
     pauseTimer.classList.remove('hide')
+    
+    
+    function resetPlayButton() {
+      playTimer.classList.remove('hide')
+      pauseTimer.classList.add('hide')
+    }
+
   })
 
   pauseTimer.addEventListener('click', () => {

@@ -45,7 +45,7 @@ export function Timer() {
     }
   }
 
-  function countDown() {
+  function countDown(callback) {
     timerTimeOut = setTimeout(() => {
       let seconds = Number(secondsDisplay.textContent)
       let minutes = Number(minutesDisplay.textContent)
@@ -58,6 +58,9 @@ export function Timer() {
         timerReset()
         controlsAudio.pauseMusic()
         controlsAudio.removeAllSelected()
+        if(callback) {
+          callback()
+        }
         return
       }
 
@@ -82,6 +85,5 @@ export function Timer() {
     removeFiveMinutes,
     pause,
     isPause,
-    
   }
 }
