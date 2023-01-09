@@ -71,7 +71,7 @@ export function Timer() {
       
       updateTimerDisplay(minutes, String(seconds - 1), minutes)
 
-      countDown()
+      countDown(callback)
     }, 1000)
 
   }
